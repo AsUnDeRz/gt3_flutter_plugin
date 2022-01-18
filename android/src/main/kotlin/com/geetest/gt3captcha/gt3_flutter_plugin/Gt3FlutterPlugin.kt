@@ -150,11 +150,15 @@ class Gt3FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
                 override fun onDialogResult(result: String?) {
                     Log.i(TAG, "Geetest onDialogResult: $result")
+                    channel.invokeMethod("onResult", hashMapOf(
+                            "result" to "$result",
+                            "code" to 1
+                    ))
                     gt3GeetestUtils.showSuccessDialog()
                 }
 
                 override fun onReceiveCaptchaCode(p0: Int) {
-                    channel.invokeMethod("onResult", hashMapOf("code" to "$p0"))
+//                    channel.invokeMethod("onResult", hashMapOf("code" to "$p0"))
                 }
 
                 override fun onStatistics(p0: String?) {}
