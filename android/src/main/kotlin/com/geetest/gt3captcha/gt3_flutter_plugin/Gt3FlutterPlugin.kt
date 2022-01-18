@@ -149,6 +149,7 @@ class Gt3FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
 
                 override fun onDialogResult(result: String?) {
+                    Log.i(TAG, "Geetest onDialogResult: $result")
                     gt3GeetestUtils.showSuccessDialog()
                 }
 
@@ -162,7 +163,9 @@ class Gt3FlutterPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     channel.invokeMethod("onClose", hashMapOf("close" to "$p0"))
                 }
 
-                override fun onSuccess(p0: String?) {}
+                override fun onSuccess(p0: String?) {
+                    Log.i(TAG, "Geetest onSuccesss: $p0")
+                }
 
                 override fun onFailed(p0: GT3ErrorBean?) {
                     val ret = hashMapOf(
